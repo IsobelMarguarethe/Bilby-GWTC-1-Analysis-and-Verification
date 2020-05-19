@@ -1,4 +1,4 @@
-# Bilby GWTC-1 Analysis and Verification
+# Bilby GWTC-1 Analysis and Verification [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3833601.svg)](https://doi.org/10.5281/zenodo.3833601)
 
 This repository holds results from an analysis of GWTC-1 using `bilby`. 
 It also contains comparisons to the `LALInference` results, which are reweighted to the `bilby` priors. 
