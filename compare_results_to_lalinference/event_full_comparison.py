@@ -10,6 +10,7 @@ import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import binom
+from scipy.spatial.distance import jensenshannon
 from bilby.gw.conversion import generate_tidal_parameters
 
 np.random.seed(seed=150914)
@@ -32,7 +33,6 @@ fontparams = {'mathtext.fontset': 'stix',
              'font.family': 'serif',
              'font.serif': "Computer Modern Roman"}
 
-from pesummary.core.webpage.main import _WebpageGeneration
 from scipy.stats import gaussian_kde
 from pesummary.core.plots.bounded_1d_kde import Bounded_1d_kde
 from pesummary.gw.plots.bounds import default_bounds
@@ -63,15 +63,21 @@ def load_event_data(event, data_path="/home/isobel.romero-shaw/bilby-gwtc-1-anal
     Returns lalinference and bilby posterior samples
     for a given event (passes as a string)
     """
-    bilby_data = data_path + "gwtc-1_analysis_results/downsampled_posterior_samples/"+ event + "_downsampled_posterior_samples.dat"
+    bilby_data = "../gwtc-1_analysis_results/downsampled_posterior_samples/"+ event + "_downsampled_posterior_samples.dat"
     lalinference_data = data_path + "compare_results_to_lalinference/" + event + "/rejection_lalinference_posterior_samples.dat"       
     lalinference_posterior_samples = pd.read_csv(lalinference_data, delimiter=' ')
     bilby_posterior_samples = pd.read_csv(bilby_data, delimiter=' ')
     try:
         bilby_posterior_samples['mass_1']
+        for key in bilby_posterior_samples:
+           if 'lambda' in key:
+               print(key)
     except KeyError:
         # allows reading file if using samples downloaded from PESummary
         bilby_posterior_samples = pd.read_csv(bilby_data, delimiter='\t')
+    if 'lambda_1' in lalinference_posterior_samples.keys():
+        lalinference_posterior_samples = generate_tidal_parameters(lalinference_posterior_samples)
+        bilby_posterior_samples = generate_tidal_parameters(bilby_posterior_samples)
     return bilby_posterior_samples, lalinference_posterior_samples
 
 def js_bootstrap(key, set_1, set_2, nsamples, ntests):
@@ -102,7 +108,7 @@ def js_bootstrap(key, set_1, set_2, nsamples, ntests):
                     xhigh = bounds["high"]
         set_1_pdf = Bounded_1d_kde(bp, xlow=xlow, xhigh=xhigh)(x)
         set_2_pdf = Bounded_1d_kde(lp, xlow=xlow, xhigh=xhigh)(x)
-        js_array[j] = np.nan_to_num(_WebpageGeneration.jension_shannon_divergence(set_1_pdf, set_2_pdf))
+        js_array[j] = np.nan_to_num(np.power(jensenshannon(set_1_pdf, set_2_pdf), 2))
     return js_array
 
 def calc_median_error(jsvalues, quantiles=(0.16, 0.84)):
@@ -229,10 +235,6 @@ def main():
     main_keys = args.main_keys
 
     bilby_samples, lalinf_samples = load_event_data(args.event, args.data_path)
-    
-    if any('lambda' in key for key in main_keys):
-        bilby_samples = generate_tidal_parameters(bilby_samples)
-        lalinf_samples = generate_tidal_parameters(lalinf_samples)
     
     gwtc1_summary = dict()
 

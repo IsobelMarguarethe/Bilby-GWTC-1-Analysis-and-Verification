@@ -49,4 +49,4 @@ if args.Nsamples > len(result.posterior):
 # Save the result downsampled 
 result.posterior = result.posterior.sample(Nsamples)
 result.save_posterior_samples(outdir=outdir)
-result.save_to_file(outdir='./gwtc-1_analysis_results/downsampled_bilby_result_files/')
+result.save_to_file(outdir='./gwtc-1_analysis_results/bilby_result_files/')
