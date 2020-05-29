@@ -1,3 +1,539 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:77221c43b9d4f65b0f05df6a91bbc9e288b5972d5cdf565dfaab3cc4b3bbd716
-size 58997
+<!DOCTYPE html>
+  <title>Summary Pages</title>
+<!--
+                                    Made by
+            ____  ___________
+           / __ \/ ____/ ___/__  ______ ___  ____ ___  ____ ________  __
+          / /_/ / __/  \__ \/ / / / __ `__ \/ __ `__ \/ __ `/ ___/ / / /
+         / ____/ /___ ___/ / /_/ / / / / / / / / / / / /_/ / /  / /_/ /
+        /_/   /_____//____/\__,_/_/ /_/ /_/_/ /_/ /_/\__,_/_/   \__, /
+                                                               /____/
+
+                                   MIT License
+
+       PESummary was developed by Hoy et al. and source code can be seen
+       here: git.ligo.org/lscsoft/pesummary. If you wish to use PESummary
+   for your own work, please cite PESummary. The following page gives details
+   https://lscsoft.docs.ligo.org/pesummary/stable_docs/citing_pesummary.html.
+                                     Thanks!
+  -->
+<html lang='en'>
+    <title>title</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+
+</head>
+<body style='background-color:#F8F8F8; margin-top:5em; min-height: 100%'>
+
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+    <script src='../js/combine_corner.js'></script>
+    <script src='../js/grab.js'></script>
+    <script src='../js/modal.js'></script>
+    <script src='../js/multi_dropbar.js'></script>
+    <script src='../js/multiple_posteriors.js'></script>
+    <script src='../js/search.js'></script>
+    <script src='../js/side_bar.js'></script>
+    <script src='../js/html_to_csv.js'></script>
+    <script src='../js/html_to_json.js'></script>
+    <script src='../js/html_to_shell.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/image_styles.css">
+
+<h7 hidden>bilby</h7>
+<h7 hidden>bilby</h7>
+<nav class='navbar navbar-expand-sm fixed-top navbar-custom' style='background-color: #0072b2'>
+  <a class='navbar-brand' href='#' style='color: white'>Navbar</a>
+  <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#collapsibleNavbar'>
+    <span class='navbar-toggler-icon'></span>
+  </button>
+    <div class='collapse navbar-collapse' id='collapsibleNavbar'>
+      <ul class='navbar-nav'>
+        <li class='nav-item'>
+          <a class='nav-link' href='#' onclick='grab_html("home")'>home</a>
+        </li>
+        <li class='nav-item'>
+          <li class='nav-item dropdown'>
+            <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+            Result Pages
+            </a>
+            <ul class='dropdown-menu' aria-labelledby='dropdown1'>
+              <li class='dropdown-item' href='#' onclick='grab_html("bilby", label="bilby")'><a>bilby</a></li>
+              <li class='dropdown-item' href='#' onclick='grab_html("lalinference", label="lalinference")'><a>lalinference</a></li>
+              <li class='dropdown-item' href='#' onclick='grab_html("Comparison")'><a>Comparison</a></li>
+            </ul>
+          </li>
+        <li class='nav-item'>
+          <a class='nav-link' href='#' onclick='grab_html("Corner", label="bilby")'>Corner</a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link' href='#' onclick='grab_html("Config", label="bilby")'>Config</a>
+        </li>
+        <li class='nav-item'>
+          <li class='nav-item dropdown'>
+            <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+            1d Histograms
+            </a>
+            <ul class='dropdown-menu' aria-labelledby='dropdown1'>
+              <li class='dropdown-item' href='#' onclick='grab_html("Custom", label="bilby")'><a>Custom</a></li>
+              <li class='dropdown-item' href='#' onclick='grab_html("All", label="bilby")'><a>All</a></li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='masses' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>masses</a>
+                <ul class='dropdown-menu' aria-labelledby='masses'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("chirp_mass", label="bilby")'><a>chirp_mass</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("inverted_mass_ratio", label="bilby")'><a>inverted_mass_ratio</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("mass_1", label="bilby")'><a>mass_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("mass_2", label="bilby")'><a>mass_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("mass_ratio", label="bilby")'><a>mass_ratio</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("symmetric_mass_ratio", label="bilby")'><a>symmetric_mass_ratio</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("total_mass", label="bilby")'><a>total_mass</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='source' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>source</a>
+                <ul class='dropdown-menu' aria-labelledby='source'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("chirp_mass_source", label="bilby")'><a>chirp_mass_source</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("mass_1_source", label="bilby")'><a>mass_1_source</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("mass_2_source", label="bilby")'><a>mass_2_source</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("total_mass_source", label="bilby")'><a>total_mass_source</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='remnant' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>remnant</a>
+                <ul class='dropdown-menu' aria-labelledby='remnant'>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='inclination' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>inclination</a>
+                <ul class='dropdown-menu' aria-labelledby='inclination'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("cos_iota", label="bilby")'><a>cos_iota</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("cos_theta_jn", label="bilby")'><a>cos_theta_jn</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("iota", label="bilby")'><a>iota</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("theta_jn", label="bilby")'><a>theta_jn</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='spins' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>spins</a>
+                <ul class='dropdown-menu' aria-labelledby='spins'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("a_1", label="bilby")'><a>a_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("a_2", label="bilby")'><a>a_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("chi_eff", label="bilby")'><a>chi_eff</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("chi_p", label="bilby")'><a>chi_p</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("pn_spin_order", label="bilby")'><a>pn_spin_order</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("spin_1x", label="bilby")'><a>spin_1x</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("spin_1y", label="bilby")'><a>spin_1y</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("spin_1z", label="bilby")'><a>spin_1z</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("spin_2x", label="bilby")'><a>spin_2x</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("spin_2y", label="bilby")'><a>spin_2y</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("spin_2z", label="bilby")'><a>spin_2z</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='spin_angles' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>spin_angles</a>
+                <ul class='dropdown-menu' aria-labelledby='spin_angles'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("cos_tilt_1", label="bilby")'><a>cos_tilt_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("cos_tilt_2", label="bilby")'><a>cos_tilt_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("phi_1", label="bilby")'><a>phi_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("phi_12", label="bilby")'><a>phi_12</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("phi_2", label="bilby")'><a>phi_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("phi_jl", label="bilby")'><a>phi_jl</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("tilt_1", label="bilby")'><a>tilt_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("tilt_2", label="bilby")'><a>tilt_2</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='tidal' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>tidal</a>
+                <ul class='dropdown-menu' aria-labelledby='tidal'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("delta_lambda", label="bilby")'><a>delta_lambda</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("lambda_1", label="bilby")'><a>lambda_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("lambda_2", label="bilby")'><a>lambda_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("lambda_tilde", label="bilby")'><a>lambda_tilde</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='location' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>location</a>
+                <ul class='dropdown-menu' aria-labelledby='location'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("comoving_distance", label="bilby")'><a>comoving_distance</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("dec", label="bilby")'><a>dec</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("luminosity_distance", label="bilby")'><a>luminosity_distance</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("psi", label="bilby")'><a>psi</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("ra", label="bilby")'><a>ra</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("redshift", label="bilby")'><a>redshift</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='timings' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>timings</a>
+                <ul class='dropdown-menu' aria-labelledby='timings'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("H1_time", label="bilby")'><a>H1_time</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("L1_time", label="bilby")'><a>L1_time</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("V1_time", label="bilby")'><a>V1_time</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("geocent_time", label="bilby")'><a>geocent_time</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='SNR' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>SNR</a>
+                <ul class='dropdown-menu' aria-labelledby='SNR'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("H1_matched_filter_snr_abs", label="bilby")'><a>H1_matched_filter_snr_abs</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("H1_matched_filter_snr_angle", label="bilby")'><a>H1_matched_filter_snr_angle</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("H1_optimal_snr", label="bilby")'><a>H1_optimal_snr</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("L1_matched_filter_snr_abs", label="bilby")'><a>L1_matched_filter_snr_abs</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("L1_matched_filter_snr_angle", label="bilby")'><a>L1_matched_filter_snr_angle</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("L1_optimal_snr", label="bilby")'><a>L1_optimal_snr</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("V1_matched_filter_snr_abs", label="bilby")'><a>V1_matched_filter_snr_abs</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("V1_matched_filter_snr_angle", label="bilby")'><a>V1_matched_filter_snr_angle</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("V1_optimal_snr", label="bilby")'><a>V1_optimal_snr</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("network_matched_filter_snr", label="bilby")'><a>network_matched_filter_snr</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("network_optimal_snr", label="bilby")'><a>network_optimal_snr</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='calibration' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>calibration</a>
+                <ul class='dropdown-menu' aria-labelledby='calibration'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("maximum_frequency", label="bilby")'><a>maximum_frequency</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_amplitude_0", label="bilby")'><a>recalib_H1_amplitude_0</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_amplitude_1", label="bilby")'><a>recalib_H1_amplitude_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_amplitude_2", label="bilby")'><a>recalib_H1_amplitude_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_amplitude_3", label="bilby")'><a>recalib_H1_amplitude_3</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_amplitude_4", label="bilby")'><a>recalib_H1_amplitude_4</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_amplitude_5", label="bilby")'><a>recalib_H1_amplitude_5</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_amplitude_6", label="bilby")'><a>recalib_H1_amplitude_6</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_amplitude_7", label="bilby")'><a>recalib_H1_amplitude_7</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_amplitude_8", label="bilby")'><a>recalib_H1_amplitude_8</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_amplitude_9", label="bilby")'><a>recalib_H1_amplitude_9</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_frequency_0", label="bilby")'><a>recalib_H1_frequency_0</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_frequency_1", label="bilby")'><a>recalib_H1_frequency_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_frequency_2", label="bilby")'><a>recalib_H1_frequency_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_frequency_3", label="bilby")'><a>recalib_H1_frequency_3</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_frequency_4", label="bilby")'><a>recalib_H1_frequency_4</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_frequency_5", label="bilby")'><a>recalib_H1_frequency_5</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_frequency_6", label="bilby")'><a>recalib_H1_frequency_6</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_frequency_7", label="bilby")'><a>recalib_H1_frequency_7</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_frequency_8", label="bilby")'><a>recalib_H1_frequency_8</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_frequency_9", label="bilby")'><a>recalib_H1_frequency_9</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_phase_0", label="bilby")'><a>recalib_H1_phase_0</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_phase_1", label="bilby")'><a>recalib_H1_phase_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_phase_2", label="bilby")'><a>recalib_H1_phase_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_phase_3", label="bilby")'><a>recalib_H1_phase_3</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_phase_4", label="bilby")'><a>recalib_H1_phase_4</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_phase_5", label="bilby")'><a>recalib_H1_phase_5</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_phase_6", label="bilby")'><a>recalib_H1_phase_6</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_phase_7", label="bilby")'><a>recalib_H1_phase_7</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_phase_8", label="bilby")'><a>recalib_H1_phase_8</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_H1_phase_9", label="bilby")'><a>recalib_H1_phase_9</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_amplitude_0", label="bilby")'><a>recalib_L1_amplitude_0</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_amplitude_1", label="bilby")'><a>recalib_L1_amplitude_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_amplitude_2", label="bilby")'><a>recalib_L1_amplitude_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_amplitude_3", label="bilby")'><a>recalib_L1_amplitude_3</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_amplitude_4", label="bilby")'><a>recalib_L1_amplitude_4</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_amplitude_5", label="bilby")'><a>recalib_L1_amplitude_5</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_amplitude_6", label="bilby")'><a>recalib_L1_amplitude_6</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_amplitude_7", label="bilby")'><a>recalib_L1_amplitude_7</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_amplitude_8", label="bilby")'><a>recalib_L1_amplitude_8</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_amplitude_9", label="bilby")'><a>recalib_L1_amplitude_9</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_frequency_0", label="bilby")'><a>recalib_L1_frequency_0</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_frequency_1", label="bilby")'><a>recalib_L1_frequency_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_frequency_2", label="bilby")'><a>recalib_L1_frequency_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_frequency_3", label="bilby")'><a>recalib_L1_frequency_3</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_frequency_4", label="bilby")'><a>recalib_L1_frequency_4</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_frequency_5", label="bilby")'><a>recalib_L1_frequency_5</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_frequency_6", label="bilby")'><a>recalib_L1_frequency_6</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_frequency_7", label="bilby")'><a>recalib_L1_frequency_7</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_frequency_8", label="bilby")'><a>recalib_L1_frequency_8</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_frequency_9", label="bilby")'><a>recalib_L1_frequency_9</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_phase_0", label="bilby")'><a>recalib_L1_phase_0</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_phase_1", label="bilby")'><a>recalib_L1_phase_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_phase_2", label="bilby")'><a>recalib_L1_phase_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_phase_3", label="bilby")'><a>recalib_L1_phase_3</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_phase_4", label="bilby")'><a>recalib_L1_phase_4</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_phase_5", label="bilby")'><a>recalib_L1_phase_5</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_phase_6", label="bilby")'><a>recalib_L1_phase_6</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_phase_7", label="bilby")'><a>recalib_L1_phase_7</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_phase_8", label="bilby")'><a>recalib_L1_phase_8</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_L1_phase_9", label="bilby")'><a>recalib_L1_phase_9</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_amplitude_0", label="bilby")'><a>recalib_V1_amplitude_0</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_amplitude_1", label="bilby")'><a>recalib_V1_amplitude_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_amplitude_2", label="bilby")'><a>recalib_V1_amplitude_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_amplitude_3", label="bilby")'><a>recalib_V1_amplitude_3</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_amplitude_4", label="bilby")'><a>recalib_V1_amplitude_4</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_amplitude_5", label="bilby")'><a>recalib_V1_amplitude_5</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_amplitude_6", label="bilby")'><a>recalib_V1_amplitude_6</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_amplitude_7", label="bilby")'><a>recalib_V1_amplitude_7</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_amplitude_8", label="bilby")'><a>recalib_V1_amplitude_8</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_amplitude_9", label="bilby")'><a>recalib_V1_amplitude_9</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_frequency_0", label="bilby")'><a>recalib_V1_frequency_0</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_frequency_1", label="bilby")'><a>recalib_V1_frequency_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_frequency_2", label="bilby")'><a>recalib_V1_frequency_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_frequency_3", label="bilby")'><a>recalib_V1_frequency_3</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_frequency_4", label="bilby")'><a>recalib_V1_frequency_4</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_frequency_5", label="bilby")'><a>recalib_V1_frequency_5</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_frequency_6", label="bilby")'><a>recalib_V1_frequency_6</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_frequency_7", label="bilby")'><a>recalib_V1_frequency_7</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_frequency_8", label="bilby")'><a>recalib_V1_frequency_8</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_frequency_9", label="bilby")'><a>recalib_V1_frequency_9</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_phase_0", label="bilby")'><a>recalib_V1_phase_0</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_phase_1", label="bilby")'><a>recalib_V1_phase_1</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_phase_2", label="bilby")'><a>recalib_V1_phase_2</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_phase_3", label="bilby")'><a>recalib_V1_phase_3</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_phase_4", label="bilby")'><a>recalib_V1_phase_4</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_phase_5", label="bilby")'><a>recalib_V1_phase_5</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_phase_6", label="bilby")'><a>recalib_V1_phase_6</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_phase_7", label="bilby")'><a>recalib_V1_phase_7</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_phase_8", label="bilby")'><a>recalib_V1_phase_8</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("recalib_V1_phase_9", label="bilby")'><a>recalib_V1_phase_9</a></li>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='energy' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>energy</a>
+                <ul class='dropdown-menu' aria-labelledby='energy'>
+                </ul>
+              </li>
+              <li class='dropdown-item dropdown'>
+                <a class='dropdown-toggle' id='others' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>others</a>
+                <ul class='dropdown-menu' aria-labelledby='others'>
+                  <li class='dropdown-item' href='#' onclick='grab_html("log_likelihood", label="bilby")'><a>log_likelihood</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("phase", label="bilby")'><a>phase</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("pn_phase_order", label="bilby")'><a>pn_phase_order</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("chi_1_in_plane", label="bilby")'><a>chi_1_in_plane</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("chi_2_in_plane", label="bilby")'><a>chi_2_in_plane</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("pn_amplitude_order", label="bilby")'><a>pn_amplitude_order</a></li>
+                  <li class='dropdown-item' href='#' onclick='grab_html("pn_tidal_order", label="bilby")'><a>pn_tidal_order</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        <li class='nav-item'>
+          <li class='nav-item dropdown'>
+            <a class='nav-link dropdown-toggle' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+            Interactive
+            </a>
+            <ul class='dropdown-menu' aria-labelledby='dropdown1'>
+              <li class='dropdown-item' href='#' onclick='grab_html("Interactive_Corner", label="bilby")'><a>Interactive_Corner</a></li>
+            </ul>
+          </li>
+        <li class='nav-item'>
+          <a class='nav-link' href='#' onclick='grab_html("Classification", label="bilby")'>Classification</a>
+        </li>
+      </ul>
+    </div>
+    <div class='collapse navbar-collapse' id='collapsibleNavbar'>
+      <ul class='navbar-nav flex-row ml-md-auto d-none d-md-flex'style='margin-right:1em;'>
+  <a class='nav-link' href='#', onclick='grab_html("About")'>About</a>
+      </ul>
+    </div>
+    <input type='text' placeholder='search' id='search'>
+    <button type='submit' onclick='myFunction()'>Search</button>
+</nav>
+  <div class='banner'>
+bilby
+</div>
+  <div class='paragraph'>
+Below is the custom corner plotter for bilby
+</div>
+<link rel='stylesheet' href='../css/side_bar.css'>
+<div class='w3-sidebar w3-bar-block w3-border-right sidenav' style='display:none' id='mySidebar'>
+  <button onclick='side_bar_close()' class='close'>&times;</button>
+  <input type='checkbox' name='type' value='H1_optimal_snr' id='H1_optimal_snr' style='text-align: center; margin: 0 5px 0;'>H1_optimal_snr<br>
+  <input type='checkbox' name='type' value='L1_optimal_snr' id='L1_optimal_snr' style='text-align: center; margin: 0 5px 0;'>L1_optimal_snr<br>
+  <input type='checkbox' name='type' value='V1_optimal_snr' id='V1_optimal_snr' style='text-align: center; margin: 0 5px 0;'>V1_optimal_snr<br>
+  <input type='checkbox' name='type' value='a_1' id='a_1' style='text-align: center; margin: 0 5px 0;'>a_1<br>
+  <input type='checkbox' name='type' value='a_2' id='a_2' style='text-align: center; margin: 0 5px 0;'>a_2<br>
+  <input type='checkbox' name='type' value='chi_1_in_plane' id='chi_1_in_plane' style='text-align: center; margin: 0 5px 0;'>chi_1_in_plane<br>
+  <input type='checkbox' name='type' value='chi_2_in_plane' id='chi_2_in_plane' style='text-align: center; margin: 0 5px 0;'>chi_2_in_plane<br>
+  <input type='checkbox' name='type' value='chi_eff' id='chi_eff' style='text-align: center; margin: 0 5px 0;'>chi_eff<br>
+  <input type='checkbox' name='type' value='chi_p' id='chi_p' style='text-align: center; margin: 0 5px 0;'>chi_p<br>
+  <input type='checkbox' name='type' value='chirp_mass' id='chirp_mass' style='text-align: center; margin: 0 5px 0;'>chirp_mass<br>
+  <input type='checkbox' name='type' value='chirp_mass_source' id='chirp_mass_source' style='text-align: center; margin: 0 5px 0;'>chirp_mass_source<br>
+  <input type='checkbox' name='type' value='comoving_distance' id='comoving_distance' style='text-align: center; margin: 0 5px 0;'>comoving_distance<br>
+  <input type='checkbox' name='type' value='cos_theta_jn' id='cos_theta_jn' style='text-align: center; margin: 0 5px 0;'>cos_theta_jn<br>
+  <input type='checkbox' name='type' value='cos_tilt_1' id='cos_tilt_1' style='text-align: center; margin: 0 5px 0;'>cos_tilt_1<br>
+  <input type='checkbox' name='type' value='cos_tilt_2' id='cos_tilt_2' style='text-align: center; margin: 0 5px 0;'>cos_tilt_2<br>
+  <input type='checkbox' name='type' value='dec' id='dec' style='text-align: center; margin: 0 5px 0;'>dec<br>
+  <input type='checkbox' name='type' value='geocent_time' id='geocent_time' style='text-align: center; margin: 0 5px 0;'>geocent_time<br>
+  <input type='checkbox' name='type' value='lambda_1' id='lambda_1' style='text-align: center; margin: 0 5px 0;'>lambda_1<br>
+  <input type='checkbox' name='type' value='lambda_2' id='lambda_2' style='text-align: center; margin: 0 5px 0;'>lambda_2<br>
+  <input type='checkbox' name='type' value='log_likelihood' id='log_likelihood' style='text-align: center; margin: 0 5px 0;'>log_likelihood<br>
+  <input type='checkbox' name='type' value='luminosity_distance' id='luminosity_distance' style='text-align: center; margin: 0 5px 0;'>luminosity_distance<br>
+  <input type='checkbox' name='type' value='mass_1' id='mass_1' style='text-align: center; margin: 0 5px 0;'>mass_1<br>
+  <input type='checkbox' name='type' value='mass_1_source' id='mass_1_source' style='text-align: center; margin: 0 5px 0;'>mass_1_source<br>
+  <input type='checkbox' name='type' value='mass_2' id='mass_2' style='text-align: center; margin: 0 5px 0;'>mass_2<br>
+  <input type='checkbox' name='type' value='mass_2_source' id='mass_2_source' style='text-align: center; margin: 0 5px 0;'>mass_2_source<br>
+  <input type='checkbox' name='type' value='mass_ratio' id='mass_ratio' style='text-align: center; margin: 0 5px 0;'>mass_ratio<br>
+  <input type='checkbox' name='type' value='maximum_frequency' id='maximum_frequency' style='text-align: center; margin: 0 5px 0;'>maximum_frequency<br>
+  <input type='checkbox' name='type' value='phase' id='phase' style='text-align: center; margin: 0 5px 0;'>phase<br>
+  <input type='checkbox' name='type' value='phi_1' id='phi_1' style='text-align: center; margin: 0 5px 0;'>phi_1<br>
+  <input type='checkbox' name='type' value='phi_12' id='phi_12' style='text-align: center; margin: 0 5px 0;'>phi_12<br>
+  <input type='checkbox' name='type' value='phi_2' id='phi_2' style='text-align: center; margin: 0 5px 0;'>phi_2<br>
+  <input type='checkbox' name='type' value='phi_jl' id='phi_jl' style='text-align: center; margin: 0 5px 0;'>phi_jl<br>
+  <input type='checkbox' name='type' value='pn_amplitude_order' id='pn_amplitude_order' style='text-align: center; margin: 0 5px 0;'>pn_amplitude_order<br>
+  <input type='checkbox' name='type' value='pn_phase_order' id='pn_phase_order' style='text-align: center; margin: 0 5px 0;'>pn_phase_order<br>
+  <input type='checkbox' name='type' value='pn_spin_order' id='pn_spin_order' style='text-align: center; margin: 0 5px 0;'>pn_spin_order<br>
+  <input type='checkbox' name='type' value='pn_tidal_order' id='pn_tidal_order' style='text-align: center; margin: 0 5px 0;'>pn_tidal_order<br>
+  <input type='checkbox' name='type' value='psi' id='psi' style='text-align: center; margin: 0 5px 0;'>psi<br>
+  <input type='checkbox' name='type' value='ra' id='ra' style='text-align: center; margin: 0 5px 0;'>ra<br>
+  <input type='checkbox' name='type' value='recalib_H1_amplitude_0' id='recalib_H1_amplitude_0' style='text-align: center; margin: 0 5px 0;'>recalib_H1_amplitude_0<br>
+  <input type='checkbox' name='type' value='recalib_H1_amplitude_1' id='recalib_H1_amplitude_1' style='text-align: center; margin: 0 5px 0;'>recalib_H1_amplitude_1<br>
+  <input type='checkbox' name='type' value='recalib_H1_amplitude_2' id='recalib_H1_amplitude_2' style='text-align: center; margin: 0 5px 0;'>recalib_H1_amplitude_2<br>
+  <input type='checkbox' name='type' value='recalib_H1_amplitude_3' id='recalib_H1_amplitude_3' style='text-align: center; margin: 0 5px 0;'>recalib_H1_amplitude_3<br>
+  <input type='checkbox' name='type' value='recalib_H1_amplitude_4' id='recalib_H1_amplitude_4' style='text-align: center; margin: 0 5px 0;'>recalib_H1_amplitude_4<br>
+  <input type='checkbox' name='type' value='recalib_H1_amplitude_5' id='recalib_H1_amplitude_5' style='text-align: center; margin: 0 5px 0;'>recalib_H1_amplitude_5<br>
+  <input type='checkbox' name='type' value='recalib_H1_amplitude_6' id='recalib_H1_amplitude_6' style='text-align: center; margin: 0 5px 0;'>recalib_H1_amplitude_6<br>
+  <input type='checkbox' name='type' value='recalib_H1_amplitude_7' id='recalib_H1_amplitude_7' style='text-align: center; margin: 0 5px 0;'>recalib_H1_amplitude_7<br>
+  <input type='checkbox' name='type' value='recalib_H1_amplitude_8' id='recalib_H1_amplitude_8' style='text-align: center; margin: 0 5px 0;'>recalib_H1_amplitude_8<br>
+  <input type='checkbox' name='type' value='recalib_H1_amplitude_9' id='recalib_H1_amplitude_9' style='text-align: center; margin: 0 5px 0;'>recalib_H1_amplitude_9<br>
+  <input type='checkbox' name='type' value='recalib_H1_frequency_0' id='recalib_H1_frequency_0' style='text-align: center; margin: 0 5px 0;'>recalib_H1_frequency_0<br>
+  <input type='checkbox' name='type' value='recalib_H1_frequency_1' id='recalib_H1_frequency_1' style='text-align: center; margin: 0 5px 0;'>recalib_H1_frequency_1<br>
+  <input type='checkbox' name='type' value='recalib_H1_frequency_2' id='recalib_H1_frequency_2' style='text-align: center; margin: 0 5px 0;'>recalib_H1_frequency_2<br>
+  <input type='checkbox' name='type' value='recalib_H1_frequency_3' id='recalib_H1_frequency_3' style='text-align: center; margin: 0 5px 0;'>recalib_H1_frequency_3<br>
+  <input type='checkbox' name='type' value='recalib_H1_frequency_4' id='recalib_H1_frequency_4' style='text-align: center; margin: 0 5px 0;'>recalib_H1_frequency_4<br>
+  <input type='checkbox' name='type' value='recalib_H1_frequency_5' id='recalib_H1_frequency_5' style='text-align: center; margin: 0 5px 0;'>recalib_H1_frequency_5<br>
+  <input type='checkbox' name='type' value='recalib_H1_frequency_6' id='recalib_H1_frequency_6' style='text-align: center; margin: 0 5px 0;'>recalib_H1_frequency_6<br>
+  <input type='checkbox' name='type' value='recalib_H1_frequency_7' id='recalib_H1_frequency_7' style='text-align: center; margin: 0 5px 0;'>recalib_H1_frequency_7<br>
+  <input type='checkbox' name='type' value='recalib_H1_frequency_8' id='recalib_H1_frequency_8' style='text-align: center; margin: 0 5px 0;'>recalib_H1_frequency_8<br>
+  <input type='checkbox' name='type' value='recalib_H1_frequency_9' id='recalib_H1_frequency_9' style='text-align: center; margin: 0 5px 0;'>recalib_H1_frequency_9<br>
+  <input type='checkbox' name='type' value='recalib_H1_phase_0' id='recalib_H1_phase_0' style='text-align: center; margin: 0 5px 0;'>recalib_H1_phase_0<br>
+  <input type='checkbox' name='type' value='recalib_H1_phase_1' id='recalib_H1_phase_1' style='text-align: center; margin: 0 5px 0;'>recalib_H1_phase_1<br>
+  <input type='checkbox' name='type' value='recalib_H1_phase_2' id='recalib_H1_phase_2' style='text-align: center; margin: 0 5px 0;'>recalib_H1_phase_2<br>
+  <input type='checkbox' name='type' value='recalib_H1_phase_3' id='recalib_H1_phase_3' style='text-align: center; margin: 0 5px 0;'>recalib_H1_phase_3<br>
+  <input type='checkbox' name='type' value='recalib_H1_phase_4' id='recalib_H1_phase_4' style='text-align: center; margin: 0 5px 0;'>recalib_H1_phase_4<br>
+  <input type='checkbox' name='type' value='recalib_H1_phase_5' id='recalib_H1_phase_5' style='text-align: center; margin: 0 5px 0;'>recalib_H1_phase_5<br>
+  <input type='checkbox' name='type' value='recalib_H1_phase_6' id='recalib_H1_phase_6' style='text-align: center; margin: 0 5px 0;'>recalib_H1_phase_6<br>
+  <input type='checkbox' name='type' value='recalib_H1_phase_7' id='recalib_H1_phase_7' style='text-align: center; margin: 0 5px 0;'>recalib_H1_phase_7<br>
+  <input type='checkbox' name='type' value='recalib_H1_phase_8' id='recalib_H1_phase_8' style='text-align: center; margin: 0 5px 0;'>recalib_H1_phase_8<br>
+  <input type='checkbox' name='type' value='recalib_H1_phase_9' id='recalib_H1_phase_9' style='text-align: center; margin: 0 5px 0;'>recalib_H1_phase_9<br>
+  <input type='checkbox' name='type' value='recalib_L1_amplitude_0' id='recalib_L1_amplitude_0' style='text-align: center; margin: 0 5px 0;'>recalib_L1_amplitude_0<br>
+  <input type='checkbox' name='type' value='recalib_L1_amplitude_1' id='recalib_L1_amplitude_1' style='text-align: center; margin: 0 5px 0;'>recalib_L1_amplitude_1<br>
+  <input type='checkbox' name='type' value='recalib_L1_amplitude_2' id='recalib_L1_amplitude_2' style='text-align: center; margin: 0 5px 0;'>recalib_L1_amplitude_2<br>
+  <input type='checkbox' name='type' value='recalib_L1_amplitude_3' id='recalib_L1_amplitude_3' style='text-align: center; margin: 0 5px 0;'>recalib_L1_amplitude_3<br>
+  <input type='checkbox' name='type' value='recalib_L1_amplitude_4' id='recalib_L1_amplitude_4' style='text-align: center; margin: 0 5px 0;'>recalib_L1_amplitude_4<br>
+  <input type='checkbox' name='type' value='recalib_L1_amplitude_5' id='recalib_L1_amplitude_5' style='text-align: center; margin: 0 5px 0;'>recalib_L1_amplitude_5<br>
+  <input type='checkbox' name='type' value='recalib_L1_amplitude_6' id='recalib_L1_amplitude_6' style='text-align: center; margin: 0 5px 0;'>recalib_L1_amplitude_6<br>
+  <input type='checkbox' name='type' value='recalib_L1_amplitude_7' id='recalib_L1_amplitude_7' style='text-align: center; margin: 0 5px 0;'>recalib_L1_amplitude_7<br>
+  <input type='checkbox' name='type' value='recalib_L1_amplitude_8' id='recalib_L1_amplitude_8' style='text-align: center; margin: 0 5px 0;'>recalib_L1_amplitude_8<br>
+  <input type='checkbox' name='type' value='recalib_L1_amplitude_9' id='recalib_L1_amplitude_9' style='text-align: center; margin: 0 5px 0;'>recalib_L1_amplitude_9<br>
+  <input type='checkbox' name='type' value='recalib_L1_frequency_0' id='recalib_L1_frequency_0' style='text-align: center; margin: 0 5px 0;'>recalib_L1_frequency_0<br>
+  <input type='checkbox' name='type' value='recalib_L1_frequency_1' id='recalib_L1_frequency_1' style='text-align: center; margin: 0 5px 0;'>recalib_L1_frequency_1<br>
+  <input type='checkbox' name='type' value='recalib_L1_frequency_2' id='recalib_L1_frequency_2' style='text-align: center; margin: 0 5px 0;'>recalib_L1_frequency_2<br>
+  <input type='checkbox' name='type' value='recalib_L1_frequency_3' id='recalib_L1_frequency_3' style='text-align: center; margin: 0 5px 0;'>recalib_L1_frequency_3<br>
+  <input type='checkbox' name='type' value='recalib_L1_frequency_4' id='recalib_L1_frequency_4' style='text-align: center; margin: 0 5px 0;'>recalib_L1_frequency_4<br>
+  <input type='checkbox' name='type' value='recalib_L1_frequency_5' id='recalib_L1_frequency_5' style='text-align: center; margin: 0 5px 0;'>recalib_L1_frequency_5<br>
+  <input type='checkbox' name='type' value='recalib_L1_frequency_6' id='recalib_L1_frequency_6' style='text-align: center; margin: 0 5px 0;'>recalib_L1_frequency_6<br>
+  <input type='checkbox' name='type' value='recalib_L1_frequency_7' id='recalib_L1_frequency_7' style='text-align: center; margin: 0 5px 0;'>recalib_L1_frequency_7<br>
+  <input type='checkbox' name='type' value='recalib_L1_frequency_8' id='recalib_L1_frequency_8' style='text-align: center; margin: 0 5px 0;'>recalib_L1_frequency_8<br>
+  <input type='checkbox' name='type' value='recalib_L1_frequency_9' id='recalib_L1_frequency_9' style='text-align: center; margin: 0 5px 0;'>recalib_L1_frequency_9<br>
+  <input type='checkbox' name='type' value='recalib_L1_phase_0' id='recalib_L1_phase_0' style='text-align: center; margin: 0 5px 0;'>recalib_L1_phase_0<br>
+  <input type='checkbox' name='type' value='recalib_L1_phase_1' id='recalib_L1_phase_1' style='text-align: center; margin: 0 5px 0;'>recalib_L1_phase_1<br>
+  <input type='checkbox' name='type' value='recalib_L1_phase_2' id='recalib_L1_phase_2' style='text-align: center; margin: 0 5px 0;'>recalib_L1_phase_2<br>
+  <input type='checkbox' name='type' value='recalib_L1_phase_3' id='recalib_L1_phase_3' style='text-align: center; margin: 0 5px 0;'>recalib_L1_phase_3<br>
+  <input type='checkbox' name='type' value='recalib_L1_phase_4' id='recalib_L1_phase_4' style='text-align: center; margin: 0 5px 0;'>recalib_L1_phase_4<br>
+  <input type='checkbox' name='type' value='recalib_L1_phase_5' id='recalib_L1_phase_5' style='text-align: center; margin: 0 5px 0;'>recalib_L1_phase_5<br>
+  <input type='checkbox' name='type' value='recalib_L1_phase_6' id='recalib_L1_phase_6' style='text-align: center; margin: 0 5px 0;'>recalib_L1_phase_6<br>
+  <input type='checkbox' name='type' value='recalib_L1_phase_7' id='recalib_L1_phase_7' style='text-align: center; margin: 0 5px 0;'>recalib_L1_phase_7<br>
+  <input type='checkbox' name='type' value='recalib_L1_phase_8' id='recalib_L1_phase_8' style='text-align: center; margin: 0 5px 0;'>recalib_L1_phase_8<br>
+  <input type='checkbox' name='type' value='recalib_L1_phase_9' id='recalib_L1_phase_9' style='text-align: center; margin: 0 5px 0;'>recalib_L1_phase_9<br>
+  <input type='checkbox' name='type' value='recalib_V1_amplitude_0' id='recalib_V1_amplitude_0' style='text-align: center; margin: 0 5px 0;'>recalib_V1_amplitude_0<br>
+  <input type='checkbox' name='type' value='recalib_V1_amplitude_1' id='recalib_V1_amplitude_1' style='text-align: center; margin: 0 5px 0;'>recalib_V1_amplitude_1<br>
+  <input type='checkbox' name='type' value='recalib_V1_amplitude_2' id='recalib_V1_amplitude_2' style='text-align: center; margin: 0 5px 0;'>recalib_V1_amplitude_2<br>
+  <input type='checkbox' name='type' value='recalib_V1_amplitude_3' id='recalib_V1_amplitude_3' style='text-align: center; margin: 0 5px 0;'>recalib_V1_amplitude_3<br>
+  <input type='checkbox' name='type' value='recalib_V1_amplitude_4' id='recalib_V1_amplitude_4' style='text-align: center; margin: 0 5px 0;'>recalib_V1_amplitude_4<br>
+  <input type='checkbox' name='type' value='recalib_V1_amplitude_5' id='recalib_V1_amplitude_5' style='text-align: center; margin: 0 5px 0;'>recalib_V1_amplitude_5<br>
+  <input type='checkbox' name='type' value='recalib_V1_amplitude_6' id='recalib_V1_amplitude_6' style='text-align: center; margin: 0 5px 0;'>recalib_V1_amplitude_6<br>
+  <input type='checkbox' name='type' value='recalib_V1_amplitude_7' id='recalib_V1_amplitude_7' style='text-align: center; margin: 0 5px 0;'>recalib_V1_amplitude_7<br>
+  <input type='checkbox' name='type' value='recalib_V1_amplitude_8' id='recalib_V1_amplitude_8' style='text-align: center; margin: 0 5px 0;'>recalib_V1_amplitude_8<br>
+  <input type='checkbox' name='type' value='recalib_V1_amplitude_9' id='recalib_V1_amplitude_9' style='text-align: center; margin: 0 5px 0;'>recalib_V1_amplitude_9<br>
+  <input type='checkbox' name='type' value='recalib_V1_frequency_0' id='recalib_V1_frequency_0' style='text-align: center; margin: 0 5px 0;'>recalib_V1_frequency_0<br>
+  <input type='checkbox' name='type' value='recalib_V1_frequency_1' id='recalib_V1_frequency_1' style='text-align: center; margin: 0 5px 0;'>recalib_V1_frequency_1<br>
+  <input type='checkbox' name='type' value='recalib_V1_frequency_2' id='recalib_V1_frequency_2' style='text-align: center; margin: 0 5px 0;'>recalib_V1_frequency_2<br>
+  <input type='checkbox' name='type' value='recalib_V1_frequency_3' id='recalib_V1_frequency_3' style='text-align: center; margin: 0 5px 0;'>recalib_V1_frequency_3<br>
+  <input type='checkbox' name='type' value='recalib_V1_frequency_4' id='recalib_V1_frequency_4' style='text-align: center; margin: 0 5px 0;'>recalib_V1_frequency_4<br>
+  <input type='checkbox' name='type' value='recalib_V1_frequency_5' id='recalib_V1_frequency_5' style='text-align: center; margin: 0 5px 0;'>recalib_V1_frequency_5<br>
+  <input type='checkbox' name='type' value='recalib_V1_frequency_6' id='recalib_V1_frequency_6' style='text-align: center; margin: 0 5px 0;'>recalib_V1_frequency_6<br>
+  <input type='checkbox' name='type' value='recalib_V1_frequency_7' id='recalib_V1_frequency_7' style='text-align: center; margin: 0 5px 0;'>recalib_V1_frequency_7<br>
+  <input type='checkbox' name='type' value='recalib_V1_frequency_8' id='recalib_V1_frequency_8' style='text-align: center; margin: 0 5px 0;'>recalib_V1_frequency_8<br>
+  <input type='checkbox' name='type' value='recalib_V1_frequency_9' id='recalib_V1_frequency_9' style='text-align: center; margin: 0 5px 0;'>recalib_V1_frequency_9<br>
+  <input type='checkbox' name='type' value='recalib_V1_phase_0' id='recalib_V1_phase_0' style='text-align: center; margin: 0 5px 0;'>recalib_V1_phase_0<br>
+  <input type='checkbox' name='type' value='recalib_V1_phase_1' id='recalib_V1_phase_1' style='text-align: center; margin: 0 5px 0;'>recalib_V1_phase_1<br>
+  <input type='checkbox' name='type' value='recalib_V1_phase_2' id='recalib_V1_phase_2' style='text-align: center; margin: 0 5px 0;'>recalib_V1_phase_2<br>
+  <input type='checkbox' name='type' value='recalib_V1_phase_3' id='recalib_V1_phase_3' style='text-align: center; margin: 0 5px 0;'>recalib_V1_phase_3<br>
+  <input type='checkbox' name='type' value='recalib_V1_phase_4' id='recalib_V1_phase_4' style='text-align: center; margin: 0 5px 0;'>recalib_V1_phase_4<br>
+  <input type='checkbox' name='type' value='recalib_V1_phase_5' id='recalib_V1_phase_5' style='text-align: center; margin: 0 5px 0;'>recalib_V1_phase_5<br>
+  <input type='checkbox' name='type' value='recalib_V1_phase_6' id='recalib_V1_phase_6' style='text-align: center; margin: 0 5px 0;'>recalib_V1_phase_6<br>
+  <input type='checkbox' name='type' value='recalib_V1_phase_7' id='recalib_V1_phase_7' style='text-align: center; margin: 0 5px 0;'>recalib_V1_phase_7<br>
+  <input type='checkbox' name='type' value='recalib_V1_phase_8' id='recalib_V1_phase_8' style='text-align: center; margin: 0 5px 0;'>recalib_V1_phase_8<br>
+  <input type='checkbox' name='type' value='recalib_V1_phase_9' id='recalib_V1_phase_9' style='text-align: center; margin: 0 5px 0;'>recalib_V1_phase_9<br>
+  <input type='checkbox' name='type' value='symmetric_mass_ratio' id='symmetric_mass_ratio' style='text-align: center; margin: 0 5px 0;'>symmetric_mass_ratio<br>
+  <input type='checkbox' name='type' value='theta_jn' id='theta_jn' style='text-align: center; margin: 0 5px 0;'>theta_jn<br>
+  <input type='checkbox' name='type' value='tilt_1' id='tilt_1' style='text-align: center; margin: 0 5px 0;'>tilt_1<br>
+  <input type='checkbox' name='type' value='tilt_2' id='tilt_2' style='text-align: center; margin: 0 5px 0;'>tilt_2<br>
+  <input type='checkbox' name='type' value='total_mass' id='total_mass' style='text-align: center; margin: 0 5px 0;'>total_mass<br>
+  <input type='checkbox' name='type' value='total_mass_source' id='total_mass_source' style='text-align: center; margin: 0 5px 0;'>total_mass_source<br>
+  <input type='checkbox' name='type' value='H1_matched_filter_snr_abs' id='H1_matched_filter_snr_abs' style='text-align: center; margin: 0 5px 0;'>H1_matched_filter_snr_abs<br>
+  <input type='checkbox' name='type' value='H1_matched_filter_snr_angle' id='H1_matched_filter_snr_angle' style='text-align: center; margin: 0 5px 0;'>H1_matched_filter_snr_angle<br>
+  <input type='checkbox' name='type' value='L1_matched_filter_snr_abs' id='L1_matched_filter_snr_abs' style='text-align: center; margin: 0 5px 0;'>L1_matched_filter_snr_abs<br>
+  <input type='checkbox' name='type' value='L1_matched_filter_snr_angle' id='L1_matched_filter_snr_angle' style='text-align: center; margin: 0 5px 0;'>L1_matched_filter_snr_angle<br>
+  <input type='checkbox' name='type' value='V1_matched_filter_snr_abs' id='V1_matched_filter_snr_abs' style='text-align: center; margin: 0 5px 0;'>V1_matched_filter_snr_abs<br>
+  <input type='checkbox' name='type' value='V1_matched_filter_snr_angle' id='V1_matched_filter_snr_angle' style='text-align: center; margin: 0 5px 0;'>V1_matched_filter_snr_angle<br>
+  <input type='checkbox' name='type' value='inverted_mass_ratio' id='inverted_mass_ratio' style='text-align: center; margin: 0 5px 0;'>inverted_mass_ratio<br>
+  <input type='checkbox' name='type' value='iota' id='iota' style='text-align: center; margin: 0 5px 0;'>iota<br>
+  <input type='checkbox' name='type' value='spin_1x' id='spin_1x' style='text-align: center; margin: 0 5px 0;'>spin_1x<br>
+  <input type='checkbox' name='type' value='spin_1y' id='spin_1y' style='text-align: center; margin: 0 5px 0;'>spin_1y<br>
+  <input type='checkbox' name='type' value='spin_1z' id='spin_1z' style='text-align: center; margin: 0 5px 0;'>spin_1z<br>
+  <input type='checkbox' name='type' value='spin_2x' id='spin_2x' style='text-align: center; margin: 0 5px 0;'>spin_2x<br>
+  <input type='checkbox' name='type' value='spin_2y' id='spin_2y' style='text-align: center; margin: 0 5px 0;'>spin_2y<br>
+  <input type='checkbox' name='type' value='spin_2z' id='spin_2z' style='text-align: center; margin: 0 5px 0;'>spin_2z<br>
+  <input type='checkbox' name='type' value='lambda_tilde' id='lambda_tilde' style='text-align: center; margin: 0 5px 0;'>lambda_tilde<br>
+  <input type='checkbox' name='type' value='delta_lambda' id='delta_lambda' style='text-align: center; margin: 0 5px 0;'>delta_lambda<br>
+  <input type='checkbox' name='type' value='redshift' id='redshift' style='text-align: center; margin: 0 5px 0;'>redshift<br>
+  <input type='checkbox' name='type' value='H1_time' id='H1_time' style='text-align: center; margin: 0 5px 0;'>H1_time<br>
+  <input type='checkbox' name='type' value='L1_time' id='L1_time' style='text-align: center; margin: 0 5px 0;'>L1_time<br>
+  <input type='checkbox' name='type' value='V1_time' id='V1_time' style='text-align: center; margin: 0 5px 0;'>V1_time<br>
+  <input type='checkbox' name='type' value='network_optimal_snr' id='network_optimal_snr' style='text-align: center; margin: 0 5px 0;'>network_optimal_snr<br>
+  <input type='checkbox' name='type' value='network_matched_filter_snr' id='network_matched_filter_snr' style='text-align: center; margin: 0 5px 0;'>network_matched_filter_snr<br>
+  <input type='checkbox' name='type' value='cos_iota' id='cos_iota' style='text-align: center; margin: 0 5px 0;'>cos_iota<br>
+</div>
+<div class='row justify-content-center'>
+  <p style='margin-top:2.5em; font-family: Arial-body; font-size:14px'> Input the parameter names that you would like to compare</p>
+</div>
+<div class='row justify-content-center'>
+  <input type='text' placeholder='search' id='corner_search'>
+  <button type='submit' onclick='combine(undefined, label="bilby")' style='cursor: pointer'>Submit</button>
+  <button class='w3-button w3-teal w3-xlarge' onclick='side_bar_open()' style='cursor: pointer'>&#8801</button>
+</div>
+<div class='row justify-content-center'>
+  <button type='button' class='btn btn-info' onclick='combine("mass_1, mass_2", label="bilby")' style='margin-left:0.25em; margin-right:0.25em; margin-top: 1.0em; cursor: pointer'>mass_1, mass_2</button>
+  <button type='button' class='btn btn-info' onclick='combine("luminosity_distance, iota, ra, dec", label="bilby")' style='margin-left:0.25em; margin-right:0.25em; margin-top: 1.0em; cursor: pointer'>luminosity_distance, iota, ra, dec</button>
+  <button type='button' class='btn btn-info' onclick='combine("iota, phi_12, phi_jl, tilt_1, tilt_2", label="bilby")' style='margin-left:0.25em; margin-right:0.25em; margin-top: 1.0em; cursor: pointer'>iota, phi_12, phi_jl, tilt_1, tilt_2</button>
+  <button type='button' class='btn btn-info' onclick='combine("a_1, a_2, chi_eff, chi_p, chirp_mass, chirp_mass_source, dec, geocent_time, lambda_1, lambda_2, luminosity_distance, mass_1, mass_1_source, mass_2, mass_2_source, mass_ratio, phase, phi_12, phi_jl, psi, ra, symmetric_mass_ratio, tilt_1, tilt_2, total_mass, total_mass_source, iota, lambda_tilde, delta_lambda, redshift", label="bilby")' style='margin-left:0.25em; margin-right:0.25em; margin-top: 1.0em; cursor: pointer'>all</button>
+</div>
+<div class='container' style='margin-top:3em; margin-bottom:5em; background-color:#FFFFFF; box-shadow: 0 0 5px grey; max-width: 1400px'>
+  <div class='row justify-content-center' id='corner_plot'>
+    <canvas id='canvas' width='1000' height='1000'></canvas>
+    <img src='' id='mirror'/>
+  </div>
+</div>
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+</script>
+<div class='jumbotron' style='margin-bottom:0; line-height: 0.5;background-color:#989898; bottom:0; position:bottom;width:100%'>
+<div class='container'>
+  <div class='row'>
+    <div class='col-sm-4 icon-bar'>
+      <div class='icon'>
+<a href='https://git.ligo.org/lscsoft/pesummary/tree/v0.5.6' data-toggle='tooltip' title='View PESummary-v0.5.6'><i class='fa fa-code' style='font-size: 30px; color: #E8E8E8; font-weight: 900; padding-right:10px'></i></a>
+<a href='https://git.ligo.org/lscsoft/pesummary/issues' data-toggle='tooltip' title='Open an issue ticket'><i class='fa fa-ticket' style='font-size: 30px; color: #E8E8E8; font-weight: 900; padding-right:10px'></i></a>
+<a href='https://lscsoft.docs.ligo.org/pesummary/' data-toggle='tooltip' title='View the docs!'><i class='fa fa-book' style='font-size: 30px; color: #E8E8E8; font-weight: 900; padding-right:10px'></i></a>
+<a href='https://lscsoft.docs.ligo.org/pesummary/stable_docs/tutorials/make_your_own_page_from_metafile.html' data-toggle='tooltip' title='Make your own page'><i class='fa fa-window-restore' style='font-size: 30px; color: #E8E8E8; font-weight: 900; padding-right:10px'></i></a>
+      </div>
+    </div>
+    <div class='col-sm-7'>
+<p style='color: #E8E8E8; font-weight: bold; font-family: arial-body; margin-top:14px'>This page was produced by isobel.romero-shaw at 19:06 on May 28 2020</p>
+    </div>
+  </div>
+</div>
+</div>
