@@ -1,0 +1,48 @@
+img {                                                                           
+    border-radius: 5px;                                                         
+    cursor: pointer;                                                            
+    transition: 0.3s;                                                           
+}                                                                               
+                                                                                
+img:hover {opacity: 0.5;}
+
+.popover {
+    max-width: 550px;
+    width: 550px;
+}
+
+.btn-xs {
+  font-size: 9px;
+  border-radius: 6px;
+  padding: 0px 4px;
+  margin-left: 50px;
+}
+
+.imgButton {                                                                    
+  border: none;                                                                 
+  color: white;                                                                 
+  text-align: center;                                                           
+  text-decoration: none;                                                        
+  font-size: 10px;                                                              
+  border-radius: 122px;                                                         
+}
+
+.icon a span {
+  visibility: hidden;
+  max-width: 700px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+.icon a:hover span {
+  visibility: visible;
+}
